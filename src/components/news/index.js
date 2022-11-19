@@ -1,31 +1,33 @@
 import React from "react";
 
+import Separator from "../separator";
+
 import styles from "./news.module.scss";
 
 const API_URL = "http://theatre.restomatik.ru:1337";
 
-// function cutToLength(s, l) {
-//   const words = s.split(" ");
-//   let i = 1;
-//
-//   console.log(words);
-//
-//   while (words.slice(0, i).join(" ").length < l) {
-//     i += 1;
-//
-//     if (i > words.length) {
-//       break;
-//     }
-//   }
-//
-//   const res = words.slice(0, i - 1).join(" ");
-//
-//   if (res.length < s.length) {
-//     return res + "...";
-//   } else {
-//     return s;
-//   }
-// }
+function cutToLength(s, l) {
+  const words = s.split(" ");
+  let i = 1;
+
+  console.log(words);
+
+  while (words.slice(0, i).join(" ").length < l) {
+    i += 1;
+
+    if (i > words.length) {
+      break;
+    }
+  }
+
+  const res = words.slice(0, i - 1).join(" ");
+
+  if (res.length < s.length) {
+    return res + "...";
+  } else {
+    return s;
+  }
+}
 
 export default function News({ itemsNews /*setItemsNews*/ }) {
   console.log(itemsNews);
@@ -71,23 +73,42 @@ export default function News({ itemsNews /*setItemsNews*/ }) {
               className={styles.bigNewsText}
               href={`${API_URL}/news/${itemsNews[0].id}`}
             >
-              a
+              <div className={styles.title}>
+                {itemsNews[0].attributes.title}
+              </div>
+              <div className={styles.date}>
+                {itemsNews[0].attributes.date_str}
+              </div>
             </a>
-            <a
-              className={styles.smallNewsItem1}
-              href={`${API_URL}/news/${itemsNews[1].id}`}
-            >
-              b
-            </a>
-            <a
-              className={styles.smallNewsItem2}
-              href={`${API_URL}/news/${itemsNews[2].id}`}
-            >
-              c
-            </a>
+            {[0, 1].map((i) => {
+              const item = itemsNews[i + 1];
+              const st = [styles.smallNewsItem1, styles.smallNewsItem2][i];
+              return (
+                <a key={i} className={st} href={`${API_URL}/news/${item.id}`}>
+                  <img
+                    src={API_URL + item.attributes.cover.data.attributes.url}
+                    alt=""
+                  />
+                  <div className={styles.boxWrapper}>
+                    <div className={styles.box}>
+                      <div className={styles.title}>
+                        {item.attributes.title}
+                      </div>
+                      <div className={styles.date}>
+                        {item.attributes.date_str}
+                      </div>
+                      <div className={styles.text}>
+                        {cutToLength(item.attributes.text, 150)}
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              );
+            })}
           </div>
         )}
       </div>
+      <Separator />
     </>
   );
 }

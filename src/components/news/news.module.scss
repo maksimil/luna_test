@@ -83,6 +83,20 @@
     grid-column-end: 2;
     grid-row-start: 5;
     grid-row-end: 7;
+
+    position: relative;
+
+    padding: 20px;
+
+    .title {
+      font-weight: 600;
+      font-size: 22px;
+    }
+
+    .date {
+      position: absolute;
+      bottom: 30px;
+    }
   }
 
   .smallNewsItem1 {
@@ -90,6 +104,8 @@
     grid-column-end: 3;
     grid-row-start: 1;
     grid-row-end: 4;
+
+    @extend .smallNewsItem;
   }
 
   .smallNewsItem2 {
@@ -97,5 +113,63 @@
     grid-column-end: 3;
     grid-row-start: 4;
     grid-row-end: 7;
+
+    @extend .smallNewsItem;
   }
+}
+
+.smallNewsItem {
+  display: flex;
+  flex-direction: row;
+
+  img {
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
+
+    border-right: 1px solid #6f7081;
+  }
+
+  .boxWrapper {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+
+    .box {
+      flex: 1;
+      margin: 20px;
+      position: relative;
+
+      .title {
+        font-size: 16px;
+        font-weight: 550;
+      }
+
+      .date {
+        margin-top: 20px;
+      }
+
+      .text {
+        font-size: 14px;
+        font-family: "Montserrat";
+        font-weight: 400;
+        color: white;
+
+        position: absolute;
+        bottom: 20px;
+      }
+    }
+  }
+}
+
+.title {
+  font-family: "Montserrat";
+  text-transform: uppercase;
+  color: white;
+}
+
+.date {
+  font-family: "Montserrat";
+  font-size: 14px;
+  color: #929fcc;
 }
