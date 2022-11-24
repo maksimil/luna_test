@@ -5,26 +5,29 @@ nav {
 
   width: 100vw;
   height: 88px;
-
-  // border-top: 3px solid #201e2d;
+  
   background-color: #181723;
 
   box-shadow: 0px 1px 0px #000000;
 
   .wrapper {
-    width: var(--op-width);
     height: 100%;
     margin: auto;
+    max-width: 2000px;
 
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    position: relative;
 
     ul {
       flex: 1;
 
+      max-width: calc(var(--op-width) - 420px);
       display: flex;
       justify-content: space-between;
       list-style: none;
+      margin-right: 30%;
 
       align-items: center;
 
@@ -48,6 +51,9 @@ nav {
 
     .logoContainer {
       width: 420px;
+      position: absolute;
+      top: 0;
+      right: 0;
 
       .back_elipse {
         position: absolute;
@@ -99,4 +105,17 @@ nav {
     }
   }
 }
+
+@media (max-width: 500px) {
+  .wrapper {
+    display: none;
+  }
+}
+
+@media (min-width: 501px) {
+  .wrapper {
+    display: block;
+  }
+}
+
 
