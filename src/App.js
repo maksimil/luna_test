@@ -3,6 +3,7 @@ import axios from "axios";
 
 import "./App.css";
 import Header from "./components/header";
+import MobileHeader from "./components/mobileHeader";
 import Nav from "./components/nav";
 import Slider from "./components/slider";
 import Calendar from "./components/calendar";
@@ -16,6 +17,7 @@ function App() {
   const [items, setItems] = React.useState([]);
   const [itemsNews, setItemsNews] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
+
 
   React.useEffect(() => {
     async function fetchData() {
@@ -54,6 +56,7 @@ function App() {
   return (
     <div style={{ "--op-width": `${OP_WIDTH}px` }}>
       <Header />
+      <MobileHeader />
       <Nav />
       <Slider firstDate={firstDate} items={items} />
       <main>

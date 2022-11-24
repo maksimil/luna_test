@@ -3,6 +3,10 @@
   padding: 0;
 }
 
+body {
+  background: #15141e;
+}
+
 main {
   background: #15141e;
   height: 100%;
@@ -28,4 +32,5 @@ hr {
   border: none;
   background-color: #2a2a38;
 }
+
 
