@@ -1,4 +1,4 @@
-.header_top {
+header {
   width: 100%;
   height: 200px;
 
@@ -12,6 +12,13 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: 53% center;
+}
+
+.header_top {
+  position: relative;
+  width: var(--op-width);
+  margin: auto;
+  height: 200px;
 }
 
 // .phone_blind {
@@ -46,12 +53,14 @@
 //   }
 // }
 
+$left-position: -81px;
+
 .header_info_gov {
   display: flex;
   flex-direction: row;
   position: absolute;
   top: 37px;
-  left: 74px;
+  left: $left-position;
 }
 
 .header_info_blind {
@@ -59,7 +68,7 @@
   flex-direction: row;
   position: absolute;
   top: 121px;
-  left: 76px;
+  left: calc($left-position + 2px);
 }
 
 .header_info_text {
@@ -72,3 +81,4 @@
   margin-left: 21px;
   color: #ececec;
 }
+
