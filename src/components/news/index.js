@@ -6,29 +6,6 @@ import styles from "./news.module.scss";
 
 const API_URL = "http://theatre.restomatik.ru:1337";
 
-function cutToLength(s, l) {
-  const words = s.split(" ");
-  let i = 1;
-
-  console.log(words);
-
-  while (words.slice(0, i).join(" ").length < l) {
-    i += 1;
-
-    if (i > words.length) {
-      break;
-    }
-  }
-
-  const res = words.slice(0, i - 1).join(" ");
-
-  if (res.length < s.length) {
-    return res + "...";
-  } else {
-    return s;
-  }
-}
-
 export default function News({ itemsNews /*setItemsNews*/ }) {
   console.log(itemsNews);
 
@@ -74,7 +51,7 @@ export default function News({ itemsNews /*setItemsNews*/ }) {
               href={`${API_URL}/news/${itemsNews[0].id}`}
             >
               <div className={styles.title}>
-                {cutToLength(itemsNews[0].attributes.title, 70)}
+                {itemsNews[0].attributes.title}
               </div>
               <div className={styles.date}>
                 {itemsNews[0].attributes.date_str}
@@ -92,14 +69,12 @@ export default function News({ itemsNews /*setItemsNews*/ }) {
                   <div className={styles.boxWrapper}>
                     <div className={styles.box}>
                       <div className={styles.title}>
-                        {cutToLength(item.attributes.title, 70)}
+                        {item.attributes.title}
                       </div>
                       <div className={styles.date}>
                         {item.attributes.date_str}
                       </div>
-                      <div className={styles.text}>
-                        {cutToLength(item.attributes.text, 150)}
-                      </div>
+                      <div className={styles.text}>{item.attributes.text}</div>
                     </div>
                   </div>
                 </a>
